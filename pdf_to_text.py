@@ -1,7 +1,7 @@
 import slate
 import utils
 
-pdf=r'C:\Users\sjms1\Desktop\CTF-chal\AUCTF\Fahrenheit451\Fahrenheit451FullText.pdf'
+pdf='pdf_file'
 with open(pdf, 'rb') as f:
     doc=slate.PDF(f)
 
