@@ -1,6 +1,7 @@
 import csv
 import os
 import json
+import pandas as pd
 from os import listdir, path
 
 def file_list(in_path):
@@ -33,14 +34,40 @@ def file_list(in_path):
 
 path = 'path'
 
-for i in range(0, 1000):
-    with open(file_list(path)[i], 'r') as f:
-        reader = csv.reader(f)
-        print('['+str(i)+']' + '' + str(file_list(path)[i].split('\\')[9]))
+def read_csv(path):
+    with open(file_list(path)[0], 'r') as f:
+        data = pd.read_csv(file_list(path)[0])
+        return data
+
+def file_count(csv_file):
+    count = len(csv_file)
+    print(count)
+    return count
+
+def file_name(csv_file):
+    count = file_count(csv_file)
+    for i in range(0,count):
+        print(csv_file[i])
+
+def column_name(data):
+    print(data.columns)
+
+# for i in range(0, 1000):
+#     with open(file_list(path)[i], 'r') as f:
+#         data = pd.read_csv(file_list(path)[i])
+#         file = file_list(path)[i].split('\\')[9]
+#         print('=========================[' + str(i) + ']===========================')
+#         print(file)
+#         print(data)
+        # reader = csv.reader(f)
+        # print('['+str(i)+']' + '' + str(file_list(path)[i].split('\\')[9]))
         # for txt in reader:
         #     print(txt)
         # print('===================================')
+csv_file = file_list(path)
+file_count(csv_file)
+file_name(csv_file)
 
-
-
+# data = read_csv(csv_file)
+# column_name(data)
 
