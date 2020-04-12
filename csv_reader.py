@@ -2,7 +2,7 @@ import csv
 import os
 import json
 import pandas as pd
-from os import listdir, path
+from os import listdir
 
 def file_list(in_path):
     try:
@@ -11,7 +11,6 @@ def file_list(in_path):
         filename = []
         folder_list = []
         file_path = []
-        sig_type = None
 
         for i in range(file_length):
             filename.append(0)
@@ -23,21 +22,18 @@ def file_list(in_path):
             if folder_check is True:
                 folder_list.append(abs_path)
 
-            file_path.append(os.path.abspath(os.path.join(abs_path, os.pardir)) + '\\'+ files[i])
+            file_path.append(os.path.abspath(os.path.join(abs_path, os.pardir)) + '\\' + files[i])
 
         for i in range(0, len(folder_list)):
             file_list(folder_list[i])
 
         return file_path
+
     except:
         print("[Error] Path is not found. Check your input")
 
 path = 'path'
 
-def read_csv(path):
-    with open(file_list(path)[0], 'r') as f:
-        data = pd.read_csv(file_list(path)[0])
-        return data
 
 def file_count(csv_file):
     count = len(csv_file)
@@ -46,7 +42,7 @@ def file_count(csv_file):
 
 def file_name(csv_file):
     count = file_count(csv_file)
-    for i in range(0,count):
+    for i in range(0, count):
         print(csv_file[i])
 
 def column_name(data):
@@ -64,10 +60,8 @@ def column_name(data):
         # for txt in reader:
         #     print(txt)
         # print('===================================')
-csv_file = file_list(path)
-file_count(csv_file)
-file_name(csv_file)
 
-# data = read_csv(csv_file)
-# column_name(data)
+csv_file = file_list(path)
+cnt = file_count(csv_file)
+file_name(csv_file)
 
