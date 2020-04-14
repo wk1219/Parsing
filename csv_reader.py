@@ -48,6 +48,13 @@ def file_name(csv_file):
 def column_name(data):
     print(data.columns)
 
+def read_data(file):
+    f = open(file, 'r')
+    data = csv.reader(f)
+    for line in data:
+        print(line)
+    return data
+
 # for i in range(0, 1000):
 #     with open(file_list(path)[i], 'r') as f:
 #         data = pd.read_csv(file_list(path)[i])
@@ -61,7 +68,8 @@ def column_name(data):
         #     print(txt)
         # print('===================================')
 
-csv_file = file_list(path)
+csv_file = file_list(path)[0]
 cnt = file_count(csv_file)
+read_data(csv_file)
 file_name(csv_file)
 
