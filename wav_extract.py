@@ -23,25 +23,44 @@ class Wav:
         return size
 
     def getChunkSize(self):
-        chunksize = data[4] * data[5] * data[6] * data[7]
-        return chunksize
+        ChunkSize = data[4] * data[5] * data[6] * data[7]
+        return ChunkSize
 
     def getFormat(self):
         fmt = data[8:12]
         return fmt
 
-    # def PrintInfo(self):
-    #     print(self.getChunkId())
-    #     print(self.getChunkSize())
-    #     print(self.getFormat())
+    def getChunk(self):
+        Chunk_ = data[12:16]
+        return Chunk_
+
+    def getCSize(self):
+        ChunkSize_ = data[16:20]
+        return ChunkSize_
+
+    def getAudioFmt(self):
+        AudioFmt = data[20:22]
+        return AudioFmt
+
+    def getNumChannels(self):
+        NumChannels = data[22:24]
+        return NumChannels
 
 data = Wav.read(wav)
 chunkid = Wav.getChunkId(data)
 size = Wav.getSize(file)
 chunksize = Wav.getChunkSize(data)
 format = Wav.getFormat(data)
+chunk = Wav.getChunk(data)
+chusize = Wav.getCSize(data)
+audiofmt = Wav.getAudioFmt(data)
+numchannels = Wav.getNumChannels(data)
 
 print(chunkid)
 print(size)
 print(chunksize)
 print(format)
+print(chunk)
+print(chusize)
+print(audiofmt)
+print(numchannels)
