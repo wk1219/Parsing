@@ -46,6 +46,18 @@ class Wav:
         NumChannels = data[22:24]
         return NumChannels
 
+    def getSampleRate(self):
+        Srate = data[24:28]
+        return Srate
+
+    def getByteReate(self):
+        Brate = data[28:32]
+        return Brate
+
+    def getBlockAlign(self):
+        Balign = data[32:34]
+        return Balign
+
 data = Wav.read(wav)
 chunkid = Wav.getChunkId(data)
 size = Wav.getSize(file)
@@ -55,6 +67,9 @@ chunk = Wav.getChunk(data)
 chusize = Wav.getCSize(data)
 audiofmt = Wav.getAudioFmt(data)
 numchannels = Wav.getNumChannels(data)
+samplerate = Wav.getSampleRate(data)
+byterate = Wav.getByteReate(data)
+blockalign = Wav.getBlockAlign(data)
 
 print(chunkid)
 print(size)
@@ -64,3 +79,6 @@ print(chunk)
 print(chusize)
 print(audiofmt)
 print(numchannels)
+print(samplerate)
+print(byterate)
+print(blockalign)
